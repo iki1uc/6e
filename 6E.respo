@@ -1,0 +1,23 @@
+# 6E.respo — ROOT / Würfel / iki1uc / TMP / D12P
+
+SYSTEM = /6E/
+ROOT   = iki1uc
+
+# Ebenen (Würfel)
+D0 = style        # Form / Oberfläche
+D1 = head         # Bewusstsein / Steuerung
+D2 = HTML         # Struktur / Syntax / Ordnung
+D3 = body         # Energie / Bewegung / Ausführung
+D4 = ANKER        # Verbindung / Stabilität / Master
+D5 = API          # Übergang / Zugriff / Slave
+
+# Parität (Master/Slave)
+PARITY = D4 ↔ D5
+
+# TMP-Läufer (Übergang zwischen D5 und META)
+TMP-LAEUFER = SYQ
+
+# Regeln
+RULES = 6         # Würfel-Gesetz: exakt 6 Ebenen
+STATE = STABIL
+READY = 100%
