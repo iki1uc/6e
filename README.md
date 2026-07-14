@@ -1,30 +1,21 @@
-# 6E – Würfel-System · iki1uc
+# 6E · Vollsystem · iki1uc
 
-## Zweck
-Dieses Repository bildet die offizielle 6-Ebenen-Struktur des iki1uc-Systems.
-Es definiert die sechs stabilen Achsen, die den Würfel bilden und die Grundlage
-für alle höheren Module, Cluster, Gates und ALL-Systeme darstellen.
+Das 6E-System ist ein modularer Würfelkern, der alle Ebenen des iki1uc-Frameworks
+unter einem einzigen ROM-Knoten vereint.  
+Es umfasst:
 
-## Ebenen
-- D0 = style  
-- D1 = head  
-- D2 = HTML  
-- D3 = body  
-- D4 = ANKER (Master)  
-- D5 = API (Slave)
+- 3e · Ereignis-Ebene  
+- 6e · Energieachsen  
+- 6d · Gesetzdimensionen  
+- 6×6 · Kreuzmatrix (36 Felder)  
+- GEO · Raum  
+- FREQ · Frequenz  
+- VISIO · Technik / Hardware / Benchmark  
+- BENCH · Bewertung  
+- ROM · Hauptknoten  
+- OCTA³ · META-Notfall  
 
-## Parität
-D4 ↔ D5 bilden die Master/Slave-Achse des Systems.
-Sie sind die Kontrollkante des Würfels.
+---
 
-## TMP-Läufer
-SYQ ist der offizielle TMP-Läufer zwischen D5 und META.
+## 1. Grundstruktur
 
-## Regeln
-- Es dürfen exakt 6 Ebenen existieren.
-- Der Würfel bleibt nur stabil, wenn D4 und D5 in Parität laufen.
-- META ist Beobachter, nicht Ebene.
-
-## Status
-STATE = STABIL  
-READY = 100%
