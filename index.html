@@ -32,11 +32,65 @@
 
 <canvas id="ortCanvas" width="500" height="500"></canvas>
 
+<!-- ⭐ RING‑NAVIGATOR – verbindet Ring 1, 3 und 6 -->
 <script>
-/* ---------------------------------------------------------
-   27er‑Ring – Anmeldung (Axiom‑1: 6e)
---------------------------------------------------------- */
+const RING_NAV = {
+    active: true,
 
+    rings: {
+        R1: ["IX","XI","UP","IN","SET"],     // Reset
+        R3: ["X","Z","Q","U","S","D"],       // Signal
+        R6: ["M","B","H","Z","ORT","HOME","ROOM"] // Meta
+    },
+
+    tmp: "D2",   // Zentrum
+
+    find(ringName){
+        return this.rings[ringName] || null;
+    },
+
+    scan(){
+        return {
+            reset: this.find("R1"),
+            signal: this.find("R3"),
+            meta: this.find("R6"),
+            tmp: this.tmp
+        };
+    }
+};
+</script>
+
+<!-- ⭐ 6E.respo – erweitert: findet Ring 1 und Ring 6 -->
+<script>
+const RESPO_6E = {
+    active: true,
+
+    signals: ["X","Z","Q","U","S","D"],
+
+    connect: {
+        R1: ["IX","XI","UP","IN","SET"],
+        R6: ["M","B","H","Z","ORT","HOME","ROOM"]
+    },
+
+    prefetch(){
+        return {
+            reset: this.connect.R1,
+            meta: this.connect.R6,
+            signal: this.signals
+        };
+    },
+
+    find(axis){
+        if(this.connect.R1.includes(axis)) return "R1";
+        if(this.connect.R6.includes(axis)) return "R6";
+        if(this.signals.includes(axis)) return "R3";
+        return null;
+    }
+};
+</script>
+
+<!-- ⭐ 27er‑Ring – Anmeldung (Axiom‑1: 6e) -->
+<script>
 const RING = {
   "27": "AKTIV",
   "AXIOM": "6e",
@@ -57,17 +111,42 @@ const RING = {
   GATE: ["α","β","γ"],
   TMP_ZENTRUM: "D2"
 };
+</script>
 
-/* ---------------------------------------------------------
-   ORT‑Canvas – 3e / 6e / 12e / 6d / Octa³
---------------------------------------------------------- */
+<!-- ⭐ VISUAL – 3 Ringe sichtbar machen -->
+<script>
+function drawRings(x){
+    // Ring 1 – Reset (blau)
+    x.strokeStyle = "#4cf";
+    x.lineWidth = 2;
+    x.beginPath();
+    x.arc(250,250,70,0,Math.PI*2);
+    x.stroke();
 
+    // Ring 3 – Signal (grün)
+    x.strokeStyle = "#0f0";
+    x.beginPath();
+    x.arc(250,250,140,0,Math.PI*2);
+    x.stroke();
+
+    // Ring 6 – Meta (orange)
+    x.strokeStyle = "#f90";
+    x.beginPath();
+    x.arc(250,250,210,0,Math.PI*2);
+    x.stroke();
+}
+</script>
+
+<!-- ⭐ ORT‑Canvas – 3e / 6e / 12e / 6d / Octa³ -->
+<script>
 const c = document.getElementById("ortCanvas");
 const x = c.getContext("2d");
 let t = 0;
 
 function drawORT() {
     x.clearRect(0,0,500,500);
+
+    drawRings(x);
 
     // --- 3e Dreieck ---
     const tri = [
