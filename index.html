@@ -1,15 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>6e – Ring‑Scanner</title>
+
+  <style>
+    body {
+      background: #000;
+      margin: 0;
+      overflow: hidden;
+    }
+    #ortCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
+
+  <!-- ⭐ 6e‑Module laden -->
+  <script src="6E.respo"></script>
+  <script src="FREQ.html"></script>
+  <script src="GEO.html"></script>
+  <script src="ID.html"></script>
+  <script src="VISIO.b.html"></script>
+  <script src="VISIO.h.html"></script>
+  <script src="VISIO.t.html"></script>
+  <script src="6e.core.html"></script>
+</head>
+
+<body>
+
 <canvas id="ortCanvas" width="500" height="500"></canvas>
 
 <script>
+/* ---------------------------------------------------------
+   27er‑Ring – Anmeldung (Axiom‑1: 6e)
+--------------------------------------------------------- */
+
+const RING = {
+  "27": "AKTIV",
+  "AXIOM": "6e",
+  "EBENEN": ["R","O","S","M","TMP"],
+
+  RESET: ["IX","XI","UP","IN","SET"],
+  OPERATOR: ["IN","DA","NE","BEN"],
+  SIGNAL: ["X","Z","Q","U","S","D"],
+  META: ["M","B","H","Z","ORT","HOME","ROOM"],
+  TMP: ["B","H","T","RAUM","ZENTRUM"],
+
+  NC: {
+    "9to3": true,
+    "3to9": true,
+    "ULTRA": true
+  },
+
+  GATE: ["α","β","γ"],
+  TMP_ZENTRUM: "D2"
+};
+
+/* ---------------------------------------------------------
+   ORT‑Canvas – 3e / 6e / 12e / 6d / Octa³
+--------------------------------------------------------- */
+
 const c = document.getElementById("ortCanvas");
 const x = c.getContext("2d");
-
 let t = 0;
 
 function drawORT() {
     x.clearRect(0,0,500,500);
 
-    // --- 3e-Re Dreieck ---
+    // --- 3e Dreieck ---
     const tri = [
         [250,100],
         [100,400],
@@ -53,7 +113,7 @@ function drawORT() {
     x.closePath();
     x.stroke();
 
-    // --- 6d Gesetz-Scan ---
+    // --- 6d Gesetz‑Scan ---
     x.fillStyle = "#6cf";
     x.fillRect(50,480,400*(0.5+Math.sin(t)/2),10);
 
@@ -66,5 +126,9 @@ function drawORT() {
     t += 0.02;
     requestAnimationFrame(drawORT);
 }
+
 drawORT();
 </script>
+
+</body>
+</html>
